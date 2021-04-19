@@ -102,7 +102,6 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.github.keepsafe:taptargetview:1.6.0'
 
-    implementation 'com.github.kobakei:Android-RateThisApp:1.2.0'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
 
     implementation 'com.github.mukeshsolanki:MarkdownView-Android:1.0.4'
