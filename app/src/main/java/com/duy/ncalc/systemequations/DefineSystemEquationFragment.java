@@ -47,8 +47,6 @@ import com.duy.calculator.evaluator.MathEvaluator;
 import com.duy.calculator.evaluator.thread.ResultCallback;
 import com.duy.calculator.symja.models.SystemEquationItem;
 import com.duy.ncalc.view.ResizingEditText;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.gx.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -221,61 +219,6 @@ public class DefineSystemEquationFragment extends Fragment implements View.OnCli
     }
 
     private void showHelp() {
-        final SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-        TapTarget target1 = TapTarget.forView(mSpinnerVariable,
-                getString(R.string.select_num_var),
-                getString(R.string.select_num_var_des))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target2 = TapTarget.forView(mContainer,
-                getString(R.string.enter_coefficient),
-                getString(R.string.enter_coeff_desc))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark)
-                .targetRadius(70);
-
-        TapTarget target3 = TapTarget.forView(editVar, getString(R.string.enter_variable));
-        target3.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark);
-
-        TapTarget target4 = TapTarget.forView(btnSolve, getString(R.string.solve_system_equation));
-        target4.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark);
-
-        TapTargetSequence sequence = new TapTargetSequence(getActivity());
-        sequence.targets(target1, target2, target3, target4);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                doEval();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-            }
-        });
-//        addParams("2x - y = 2");
-//        addParams("3x + 2y = 0");
-         sequence.start();
     }
 
     /**

@@ -31,8 +31,6 @@ import android.widget.Toast;
 import com.duy.calculator.BuildConfig;
 import com.duy.calculator.R;
 import com.duy.calculator.activities.base.BaseActivity;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -236,39 +234,6 @@ public class GraphActivity extends BaseActivity {
      * user press help button
      */
     private void showHelp() {
-        TapTarget target1 = TapTarget.forView(this.findViewById(R.id.img_add_fun),
-                getString(R.string.add_function),
-                getString(R.string.input_graph_here))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(60);
-        TapTarget target2 = TapTarget.forView(this.findViewById(R.id.sw_mode),
-                "2D/3D",
-                getString(R.string.choose_mode))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(60);
-
-        TapTargetSequence sequence = new TapTargetSequence(GraphActivity.this);
-        sequence.targets(target1, target2);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                mCalculatorSetting.getEditor().putBoolean(GRAPH_STATED, true).apply();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-                mCalculatorSetting.getEditor().putBoolean(GRAPH_STATED, true).apply();
-            }
-        });
-         sequence.start();
     }
 
     /**

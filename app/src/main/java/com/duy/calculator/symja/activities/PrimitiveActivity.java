@@ -32,8 +32,6 @@ import com.duy.calculator.evaluator.thread.Command;
 import com.duy.calculator.symja.models.PrimitiveItem;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.ArrayList;
 
@@ -89,44 +87,6 @@ public class PrimitiveActivity extends BaseEvaluatorActivity {
 
     @Override
     public void clickHelp() {
-        final SharedPreferences.Editor editor = mPreferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.enter_function),
-                getString(R.string.input_primitive_here))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-
-        TapTarget target3 = TapTarget.forView(mBtnEvaluate,
-                getString(R.string.primitive),
-                getString(R.string.push_button_primitive))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTargetSequence sequence = new TapTargetSequence(PrimitiveActivity.this);
-        sequence.targets(target0, target3);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-
-            }
-        });
-         sequence.start();
     }
 
     @Override

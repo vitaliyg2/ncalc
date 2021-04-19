@@ -67,8 +67,6 @@ import com.duy.ncalc.utils.DLog;
 import com.duy.ncalc.view.AnimationFinishedListener;
 import com.duy.ncalc.view.CalculatorEditText;
 import com.duy.ncalc.view.RevealView;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.gx.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -248,37 +246,6 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
     }
 
     private void showHelp() {
-        if (mCalculatorSetting.getBoolean(BasicCalculatorActivity.class.getSimpleName())) {
-            return;
-        }
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                TapTarget target = TapTarget.forView(mFractionSwitch,
-                        getString(R.string.fraction_mode),
-                        getString(R.string.fraction_decs))
-                        .drawShadow(true)
-                        .cancelable(true)
-                        .targetCircleColor(R.color.colorAccent)
-                        .transparentTarget(true)
-                        .outerCircleColor(R.color.colorPrimary)
-                        .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-                TapTargetSequence sequence = new TapTargetSequence(BasicCalculatorActivity.this);
-                sequence.targets(target)
-                        .listener(new TapTargetSequence.Listener() {
-                            @Override
-                            public void onSequenceFinish() {
-                                mSetting.put(BasicCalculatorActivity.class.getSimpleName(), true);
-                            }
-
-                            @Override
-                            public void onSequenceCanceled(TapTarget lastTarget) {
-                                mSetting.put(BasicCalculatorActivity.class.getSimpleName(), true);
-                            }
-                        }).start();
-            }
-        }, 1000);
-
     }
 
     @Override

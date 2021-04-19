@@ -35,8 +35,6 @@ import com.duy.calculator.symja.models.SolveItem;
 import com.duy.calculator.symja.tokenizer.ExpressionTokenizer;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.ArrayList;
 
@@ -73,43 +71,6 @@ public class SolveEquationActivity extends BaseEvaluatorActivity
 
     @Override
     public void clickHelp() {
-        final SharedPreferences.Editor editor = preferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.input_equation),
-                getString(R.string.input_equation_here))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target = TapTarget.forView(mBtnEvaluate,
-                getString(R.string.solve_equation),
-                getString(R.string.push_solve_button))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTargetSequence sequence = new TapTargetSequence(SolveEquationActivity.this);
-        sequence.targets(target0, target);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-                clickEvaluate();
-            }
-        });
-         sequence.start();
     }
 
     /**

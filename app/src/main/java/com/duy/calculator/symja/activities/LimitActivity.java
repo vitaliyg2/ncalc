@@ -34,8 +34,6 @@ import com.duy.calculator.evaluator.thread.Command;
 import com.duy.calculator.symja.models.LimitItem;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.gx.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -94,52 +92,6 @@ public class LimitActivity extends BaseEvaluatorActivity {
 
     @Override
     public void clickHelp() {
-        final SharedPreferences.Editor editor = mPreferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.enter_function));
-        target0.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target1 = TapTarget.forView(mEditUpperBound,
-                getString(R.string.input_limit));
-        target1.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target2 = TapTarget.forView(mBtnEvaluate,
-                getString(R.string.eval));
-        target2.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTargetSequence sequence = new TapTargetSequence(LimitActivity.this);
-        sequence.targets(target0, target1, target2);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-        });
-         sequence.start();
     }
 
     @Override

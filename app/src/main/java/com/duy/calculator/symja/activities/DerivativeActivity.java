@@ -36,8 +36,6 @@ import com.duy.calculator.evaluator.thread.Command;
 import com.duy.calculator.symja.models.DerivativeItem;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.gx.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -105,57 +103,6 @@ public class DerivativeActivity extends BaseEvaluatorActivity {
 
     @Override
     public void clickHelp() {
-        Log.d(TAG, "clickHelp: ");
-        final SharedPreferences.Editor editor = mPreferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.enter_function),
-                getString(R.string.input_der_here))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target1 = TapTarget.forView(mSpinner,
-                getString(R.string.derivative_level),
-                getString(R.string.der_level_desc))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-        //if is not start
-        TapTarget target = TapTarget.forView(mBtnEvaluate,
-                getString(derivative),
-                getString(R.string.push_der_button))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTargetSequence sequence = new TapTargetSequence(DerivativeActivity.this);
-        sequence.targets(target0, target1, target);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-        });
-         sequence.start();
     }
 
     @Override

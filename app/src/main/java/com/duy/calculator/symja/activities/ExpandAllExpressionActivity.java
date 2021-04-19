@@ -33,8 +33,6 @@ import com.duy.calculator.evaluator.thread.Command;
 import com.duy.calculator.symja.tokenizer.ExpressionTokenizer;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.ArrayList;
 
@@ -65,43 +63,6 @@ public class ExpandAllExpressionActivity extends BaseEvaluatorActivity {
 
     @Override
     public void clickHelp() {
-        //if is not start
-        final SharedPreferences.Editor editor = preferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.enter_expression),
-                getString(R.string.input_expand_here));
-        target0.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target = TapTarget.forView(mBtnEvaluate,
-                getString(R.string.expand),
-                getString(R.string.push_expand_button));
-        target.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-        TapTargetSequence sequence = new TapTargetSequence(ExpandAllExpressionActivity.this);
-        sequence.targets(target0, target);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-
-            }
-        });
-         sequence.start();
     }
 
     @Override

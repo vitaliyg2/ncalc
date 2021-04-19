@@ -33,8 +33,6 @@ import com.duy.calculator.evaluator.thread.Command;
 import com.duy.calculator.symja.models.IntegrateItem;
 import com.duy.ncalc.calculator.BasicCalculatorActivity;
 import com.duy.ncalc.utils.DLog;
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.ArrayList;
 
@@ -87,63 +85,6 @@ public class IntegrateActivity extends BaseEvaluatorActivity {
 
     @Override
     public void clickHelp() {
-        final SharedPreferences.Editor editor = mPreferences.edit();
-        TapTarget target0 = TapTarget.forView(mInputFormula,
-                getString(R.string.enter_function),
-                getString(R.string.input_integrate_here));
-        target0.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target1 = TapTarget.forView(mEditLowerBound,
-                getString(R.string.lower_limit),
-                getString(R.string.limit_from_desc))
-                .drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark).targetRadius(70);
-
-        TapTarget target2 = TapTarget.forView(mEditUpperBound,
-                getString(R.string.upper_limit),
-                getString(R.string.limit_to_desc));
-        target2.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark);
-
-        TapTarget target3 = TapTarget.forView(mBtnEvaluate,
-                getString(R.string.integrate),
-                getString(R.string.push_integrate_button));
-        target3.drawShadow(true)
-                .cancelable(true)
-                .targetCircleColor(R.color.colorAccent)
-                .transparentTarget(true)
-                .outerCircleColor(R.color.colorPrimary)
-                .dimColor(R.color.colorPrimaryDark);
-
-        TapTargetSequence sequence = new TapTargetSequence(IntegrateActivity.this);
-        sequence.targets(target0, target1, target2, target3);
-        sequence.listener(new TapTargetSequence.Listener() {
-            @Override
-            public void onSequenceFinish() {
-                editor.putBoolean(STARTED, true);
-                editor.apply();
-                clickEvaluate();
-            }
-
-            @Override
-            public void onSequenceCanceled(TapTarget lastTarget) {
-
-            }
-        });
-         sequence.start();
     }
 
     @Override
