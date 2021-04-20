@@ -91,7 +91,7 @@ dependencies {
     }
 
     implementation project(':symja_android_library:symja_android_library')
-    implementation project(':MathView-release')
+    implementation project(':MathView:MathView')
 
     implementation "com.android.support:appcompat-v7:$androidSupportVersion"
     implementation "com.android.support:support-annotations:$androidSupportVersion"

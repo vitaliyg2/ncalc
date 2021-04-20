@@ -15,5 +15,5 @@
  */
 
 include ':app'
-include ':MathView-release'
+include ':MathView:MathView'
 include ':symja_android_library:symja_android_library'
