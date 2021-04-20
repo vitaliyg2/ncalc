@@ -28,6 +28,8 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        // missingDimensionStrategy for selecting symja flavor
+        missingDimensionStrategy 'mode', 'lite'
     }
 
     buildTypes {
@@ -88,7 +90,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
 
-    implementation project(':symja_android_library-release')
+    implementation project(':symja_android_library:symja_android_library')
     implementation project(':MathView-release')
 
     implementation "com.android.support:appcompat-v7:$androidSupportVersion"

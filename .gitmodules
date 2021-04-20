@@ -1,3 +1,6 @@
 [submodule "mathview"]
 	path = mathview
 	url = https://github.com/tranleduy2000/MathView.git
+[submodule "symja_android_library"]
+	path = symja_android_library
+	url = git@github.com:tranleduy2000/symja_android_library.git

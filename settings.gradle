@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-include ':app', ':MathView-release'
-include ':symja_android_library-release'
-include ':mathview'
-include ':mathview:MathView'
+include ':app'
+include ':MathView-release'
+include ':symja_android_library:symja_android_library'
